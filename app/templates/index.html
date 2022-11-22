@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{%block title%}| Hello {{ current_user }}{% endblock %}
+
+{% block content %}
+
+    {% if current_user.is_authenticated %}
+        <!-- {% for p in posts %}
+            <div class="card my-3">
+                <div class="card-header">
+                    {{ p.title }}
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{ p.body }}</p>
+                        <footer class="blockquote-footer"> {{ p.author.username.title() }} <cite title="Source Title">{{ p.date_created.strftime('%b-%d-%Y at %I:%M%p') }}</cite></footer>
+                    </blockquote>
+                    <a href="{{ url_for('get_post', posts_id=p.id) }}" class="btn btn-primary mt-2">See More</a>
+                    {% if p.author == current_user%}
+                        <a href="{{ url_for('edit_post', posts_id=p.id) }}" class="btn btn-success mt-2">Edit</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %} -->
+
+        <h1>welcome</h1>
+        <hr>
+        {% else %}
+        <h1 class="mt-2">Hello, please sign up or login to use the blog</h1>
+        <hr>
+    {% endif %}
+
+    <!-- {% for p in posts %}
+        <div class="card my-3">
+            <div class="card-header">
+                {{ p.title }}
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{ p.body }}</p>
+                    <footer class="blockquote-footer"> {{ p.author.username.title() }} <cite title="Source Title">{{ p.date_created.strftime('%b-%d-%Y at %I:%M%p') }}</cite></footer>
+                </blockquote>
+                <a href="{{ url_for('get_post', posts_id=p.id) }}" class="btn btn-primary mt-2">See More</a>
+                {% if p.author == current_user%}
+                    <a href="{{ url_for('edit_post', posts_id=p.id) }}" class="btn btn-success mt-2">Edit</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %} -->
+
+
+{% endblock content %}
+<!-- Bookmark insert later -->
+<!-- <i class="fa-regular fa-bookmark"></i> --> 
