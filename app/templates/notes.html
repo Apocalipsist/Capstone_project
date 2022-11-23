@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{note.title}}{% endblock %}
+
+{% block content %}
+{% for n in note %}
+    <div class="row align-items-start">
+        <div class="col">
+            <div class="card my-3">
+                <div class="card-header">
+                    {{ n.title }}
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{ n.body }}</p>
+                        <footer class="blockquote-footer"> {{ n.author.username.title() }} <cite title="Source Title">{{ n.date_created.strftime('%b-%d-%Y at %I:%M%p') }}</cite></footer>
+                    </blockquote>
+                    <a href="{{ url_for('get_post', posts_id=n.id) }}" class="btn btn-primary mt-2">See More</a>
+                    {% if n.author == current_user%}
+                        <a href="{{ url_for('edit_post', posts_id=n.id) }}" class="btn btn-success mt-2">Edit</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock content %}

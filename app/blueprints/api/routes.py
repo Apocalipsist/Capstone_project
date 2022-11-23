@@ -1,12 +1,14 @@
-import requests
-import json
-from pprint import pprint
+from flask import jsonify, request
+from . import api
+from app.models import Notes
 
-url = 'https://wger.de/api/v2/'
-data = '{"key": "value"}'
-headers = {'Accept': 'application/json', 
-           'Authorization': 'Token 1234....'}
-r = requests.patch(url=url, data=data, headers=headers)
-r
-r.content
-pprint(json.loads(r.content))
+@api.route('/')
+def index():
+    return 'Hello API here'
+
+@api.route('/notes')
+def get_posts():
+    posts = ['post 1']
+    return jsonify(posts)
+
+# 1:30 week 8 pm

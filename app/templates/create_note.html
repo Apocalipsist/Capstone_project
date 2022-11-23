@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}New Note{% endblock %}
+
+{% block content %}
+
+<form class="bg-white p-5 rounded mt-3" action="" method="post">
+    <h1 class="text-center">Create New Note</h1>
+    {{ form.csrf_token }}
+
+    {{ form.title.label }}
+    {{ form.title(class="form-control", placeholder='Enter Title') }}
+
+    {{ form.body.label }}
+    {{ form.body(class="form-control", placeholder='Enter Body') }}
+    
+    {{ form.weight.label }}
+    {{ form.weight(class="form-control", placeholder='Enter Current Weight') }}
+    
+    {{ form.goal.label }}
+    {{ form.goal(class="form-control", placeholder='Enter Goal Weight') }}
+    
+    {{ form.submit(class='btn btn-primary w-100 mt-3') }}
+</form>
+
+{% endblock %}
