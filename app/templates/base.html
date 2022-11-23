@@ -12,8 +12,8 @@
 <body class="bg-light">
     {% include "nav.html" %}
 
+    {% include 'alert.html' %}
     <div class="container shadow p-3 mb-5 bg-body rounded">
-        {% include 'alert.html' %}
         {% block content %}
         {% endblock %}
     </div>

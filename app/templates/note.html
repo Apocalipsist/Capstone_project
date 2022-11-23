@@ -12,10 +12,10 @@
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                        <p>{{ note.body }}</p>
-                        <footer class="blockquote-footer"> {{ note.author.username.title() }} <cite title="Source Title">{{ note.timestamp.strftime('%b-%d-%Y at %I:%M%p') }}</cite></footer>
+                        <p>{{ note.body.title() }}</p>
+                        <footer class="blockquote-footer"> {{ note.author.username.title() }} <cite title="Source Title">{{ note.timestamp.strftime('%b-%d-%Y') }}</cite></footer>
                     </blockquote>
-                    <a href="{{ url_for('notes', notes_id=note.id) }}" class="btn btn-primary mt-2">See More</a>
+                    <a href="{{ url_for('note', note_id=note.id) }}" class="btn btn-primary mt-2">See More</a>
                     {% if note.author == current_user%}
                         <a href="{{ url_for('edit_post', note_id=note.id) }}" class="btn btn-success mt-2">Edit</a>
                     {% endif %}
