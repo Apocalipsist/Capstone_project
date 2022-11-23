@@ -46,9 +46,11 @@ def load_user(user_id):
 
 class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    workout = db.Column(db.String(50), nullable=False)
-    note = db.Column(db.String(255), nullable=False)
-    date_created =db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    title = db.Column(db.String(50), nullable=False)
+    body = db.Column(db.String(1000), nullable=False)
+    weight = db.Column(db.Numeric(4), nullable=False)
+    goal = db.Column(db.Numeric(4), nullable=False)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # SQL equivalent to FOREIGN KEY(user_id) REFERNCES user_id
     
     def __init__(self, **kwargs):

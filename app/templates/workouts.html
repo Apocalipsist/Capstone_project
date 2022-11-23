@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{%block title%} Workouts {% endblock %}
+
+{% block content %}
+
+    {% if current_user.is_authenticated %}
+
+        <h1 class="text-center"><strong>Workouts</strong></h1>
+        <hr>
+        {% for n in note %}
+            <div class="gal">
+                <div class="card my-3">
+                    <div class="card-header">
+                        {{ n.title }}
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>{{ n.body }}</p>
+                            <footer class="blockquote-footer"> {{ n.author.username.title() }} <cite title="Source Title">{{ n.date_created.strftime('%b-%d-%Y at %I:%M%p') }}</cite></footer>
+                        </blockquote>
+                        <a href="{{ url_for('get_post', notes_id=notes.id) }}" class="btn btn-primary mt-2">See More</a>
+                        {% if n.author == current_user%}
+                            <a href="{{ url_for('edit_post', posts_id=n.id) }}" class="btn btn-success mt-2">Edit</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <div class="container container-fluid mt-3 bg-white rounded align-items-center">
+            <h1 class="mt-2">Hello, please sign up or login to use the blog</h1>
+            <hr>
+        </div>
+    {% endif %}

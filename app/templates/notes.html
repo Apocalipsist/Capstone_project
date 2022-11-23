@@ -13,11 +13,11 @@
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
                         <p>{{ n.body }}</p>
-                        <footer class="blockquote-footer"> {{ n.author.username.title() }} <cite title="Source Title">{{ n.date_created.strftime('%b-%d-%Y at %I:%M%p') }}</cite></footer>
+                        <footer class="blockquote-footer"> {{ n.author.username.title() }} <cite title="Source Title">{{ n.timestamp.strftime('%b-%d-%Y at %I:%M%p') }}</cite></footer>
                     </blockquote>
-                    <a href="{{ url_for('get_post', posts_id=n.id) }}" class="btn btn-primary mt-2">See More</a>
+                    <a href="{{ url_for('notes', note_id=n.id) }}" class="btn btn-primary mt-2">See More</a>
                     {% if n.author == current_user%}
-                        <a href="{{ url_for('edit_post', posts_id=n.id) }}" class="btn btn-success mt-2">Edit</a>
+                        <a href="{{ url_for('edit_post', note_id=n.id) }}" class="btn btn-success mt-2">Edit</a>
                     {% endif %}
                 </div>
             </div>

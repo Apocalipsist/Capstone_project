@@ -11,11 +11,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Notes</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">View Notes</a></li>
-                            <li><a class="dropdown-item" href="#">Create Note</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('notes') }}">View Notes</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('create') }}">Create Note</a></li>
+                            <!-- <li><a class="dropdown-item" href="{{ url_for('index') }}">Something else here</a></li> -->
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">Separated link</a></li> -->
                         </ul>
                     </li>
                     <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>

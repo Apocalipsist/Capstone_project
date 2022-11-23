@@ -77,21 +77,23 @@ def create():
     if form.validate_on_submit():
         title = form.title.data
         body = form.body.data
-        new_note = Notes(title=title, body=body, user_id=current_user.id)
+        weight = form.weight.data
+        goal = form.goal.data
+        new_note = Notes(title=title, body=body,weight=weight, goal=goal, user_id=current_user.id)
         flash(f'{new_note.title} has been created.', 'success')
         return redirect(url_for('index'))
 
     return render_template('create_note.html', form=form)
 
 
-@app.route('/notes/<note_id>')
-def get_post(note_id):
-    note = Notes.query.get(note_id)
+@app.route('/notes/<notes_id>')
+def get_post(notes_id):
+    note = Notes.query.get(notes_id)
     
     if not note:
-        flash(f"Note with ID #{note_id} does not exist.", 'warning')
+        flash(f"Note with ID #{notes_id} does not exist.", 'warning')
         return redirect(url_for('index'))
-    return render_template("notes.html", note=note)
+    return render_template("note.html", note=note)
 
 
 @app.route('/notes/<note_id>/edit', methods=['GET', 'POST'])
@@ -110,7 +112,7 @@ def edit_post(note_id):
         new_body = form.body.data
         note.update(title=new_title, body=new_body)
         flash(f"{note.title} was altered", 'success')
-        return redirect(url_for('get_post', post_id=note.id))
+        return redirect(url_for('get_post', note_id=note.id))
 
     return render_template("edit_note.html", note=note, form=form)
 
